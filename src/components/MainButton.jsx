@@ -17,7 +17,7 @@ function MainButton({
                     />
                 </div>
 
-                <div className="p-4 bg-white rounded shadow-md w-80 h-50 text-center">
+                <div className="p-4 bg-white rounded shadow-md w-80 h-auto min-h-50 text-center">
                     <ImageLoader
                         label={label}
                         value={value}

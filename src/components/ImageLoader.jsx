@@ -18,7 +18,7 @@ function ImageLoader({
                     <img
                         src={value}
                         alt={value}
-                        className="w-32 h-32 rounded-full mx-auto shadow-md"
+                        className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto shadow-md"
                     />
                 )
             }

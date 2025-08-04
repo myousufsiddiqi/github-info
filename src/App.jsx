@@ -56,7 +56,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-50 px-4 py-8 flex flex-col items-center">
-      <div className="w-full max-w-4xl">
+      <div className="w-full max-w-6xl">
 
         <form
           onSubmit={(e) => {
@@ -95,13 +95,13 @@ function App() {
             </div>
           )}
 
-          <div className="flex justify-center items-center gap-6 mt-12">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mt-12">
             <MainButton label="Avatar:" value = {avatar} />
             <MainButton label="Profile:" value = {profile} />
             <MainButton label={"Repositories:"} count = {repositories.count} value = {repositories.url} />
           </div>
 
-          <div className="flex justify-center items-center gap-6 mt-12">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mt-12">
             <MainButton label="Followers:" value = {followers} />
             <MainButton label="Following:" value = {following} />
           </div>
