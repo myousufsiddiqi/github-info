@@ -38,7 +38,6 @@ function App() {
     }
   }, [githubInfo, searchedUserName])
 
-  // Handle errors
   useEffect(() => {
     if (error) {
       alert(error);
