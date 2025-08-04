@@ -8,7 +8,7 @@ function SearchBar({
 
     return(
         <>
-            <div className="flex items-center gap-2 w-full max-w-sm sm:max-w-md">
+            <div className="flex items-center gap-2 w-full max-w-sm sm:max-w-md mx-auto">
               <input
                 type="text"
                 value={userName}
