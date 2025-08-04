@@ -8,13 +8,13 @@ function SearchBar({
 
     return(
         <>
-            <div className="flex items-center gap-2 w-full max-w-sm sm:max-w-md mx-auto">
+            <div className="flex items-center gap-2 w-auto max-w-sm sm:max-w-md mx-auto">
               <input
                 type="text"
                 value={userName}
                 onChange={(e) => onChange(e.target.value)}
                 placeholder={placeholder}
-                className="flex-1 px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="w-48 sm:w-64 px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
               <button
                 type="submit"
