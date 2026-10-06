@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { MainButton, SearchBar } from './components'
 import useGithubInfo from './hooks/useGithubInfo'
 
@@ -7,42 +7,12 @@ function App() {
 
   const [userName, setUserName] = useState("")
   const [searchedUserName, setSearchedUserName] = useState("")
-  const [avatar, setAvatar] = useState()
-  const [profile, setProfile] = useState()
-  const [repositories, setRepositories] = useState({url: "", count: 0})
-  const [followers, setFollowers] = useState()
-  const [following, setFollowing] = useState()
 
   const result = useGithubInfo(searchedUserName)
   
   const githubInfo = result.data
   const loading = result.loading
   const error = result.error
-  
-
-  useEffect(() => {
-    if (searchedUserName && githubInfo && Object.keys(githubInfo).length > 0) {
-      if (githubInfo.message === "Not Found") {
-        alert("User not found!");
-        return;
-      }
-      
-      setAvatar(githubInfo.avatar_url)
-      setProfile(githubInfo.html_url)
-      setRepositories({
-        url: `${githubInfo.html_url}?tab=repositories`,
-        count: githubInfo.public_repos
-      })
-      setFollowers(githubInfo.followers)
-      setFollowing(githubInfo.following)
-    }
-  }, [githubInfo, searchedUserName])
-
-  useEffect(() => {
-    if (error) {
-      alert(error);
-    }
-  }, [error])
 
   const onSearch = () => {
     if (!userName.trim()) {
@@ -94,16 +64,20 @@ function App() {
             </div>
           )}
 
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mt-12">
-            <MainButton label="Avatar:" value = {avatar} />
-            <MainButton label="Profile:" value = {profile} />
-            <MainButton label={"Repositories:"} count = {repositories.count} value = {repositories.url} />
-          </div>
+          {!loading && !error && githubInfo && Object.keys(githubInfo).length > 0 && (
+            <>
+              <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mt-12">
+                <MainButton label="Avatar:" value={githubInfo.avatar_url} />
+                <MainButton label="Profile:" value={githubInfo.html_url} />
+                <MainButton label="Repositories:" count={githubInfo.public_repos} value={`${githubInfo.html_url}?tab=repositories`} />
+              </div>
 
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mt-12">
-            <MainButton label="Followers:" value = {followers} />
-            <MainButton label="Following:" value = {following} />
-          </div>
+              <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mt-12">
+                <MainButton label="Followers:" value={githubInfo.followers} />
+                <MainButton label="Following:" value={githubInfo.following} />
+              </div>
+            </>
+          )}
 
         </div>
 
