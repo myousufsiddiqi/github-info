@@ -27,7 +27,7 @@ function ImageLoader({
                 isCheck02 && (
                     <>
                         <h2 className="text-lg font-bold mb-2">{label}</h2>
-                        <p className="text-gray-700">{count || "N/A"}</p>
+                        <p className="text-gray-700">{count ?? "N/A"}</p>
                     </>
                 )
             }
@@ -36,7 +36,7 @@ function ImageLoader({
                 !isAnylink && (
                     <>
                         <h2 className="text-lg font-bold mb-2">{label}</h2>
-                        <p className="text-gray-700">{value || "N/A"}</p>
+                        <p className="text-gray-700">{value ?? "N/A"}</p>
                     </>
                 )
             }
